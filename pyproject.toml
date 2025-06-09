@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "unsplash.py"
+name = "unplash-python"
 version = "1.0.0"
 description = "A basic API wrapper for Unsplash."
 authors = ["Ombucha <omkaar.nerurkar@gmail.com>"]
