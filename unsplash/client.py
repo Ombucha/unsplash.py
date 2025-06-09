@@ -138,8 +138,8 @@ class Client:
         :param orientation: The orientation of the photos to retrieve.
         :type orientation: Optional[Literal["landscape", "portrait", "squarish"]]
         """
-        if per_page is not None and not (1 <= per_page <= 30):
-            raise ValueError("per_page must be between 1 and 30")
+        if per_page is not None and not 1 <= per_page <= 30:
+            raise ValueError("'per_page' must be between 1 and 30")
         params = {
             "page": page,
             "per_page": per_page,
@@ -175,8 +175,8 @@ class Client:
         :param orientation: The orientation of the photos to retrieve.
         :type orientation: Optional[Literal["landscape", "portrait", "squarish"]]
         """
-        if per_page is not None and not (1 <= per_page <= 30):
-            raise ValueError("per_page must be between 1 and 30")
+        if per_page is not None and not 1 <= per_page <= 30:
+            raise ValueError("'per_page' must be between 1 and 30")
         params = {
             "page": page,
             "per_page": per_page,
@@ -197,8 +197,8 @@ class Client:
         :param per_page: The number of collections to retrieve per page. Must be between 1 and 30.
         :type per_page: Optional[int]
         """
-        if per_page is not None and not (1 <= per_page <= 30):
-            raise ValueError("per_page must be between 1 and 30")
+        if per_page is not None and not 1 <= per_page <= 30:
+            raise ValueError("'per_page' must be between 1 and 30")
         params = {
             "page": page,
             "per_page": per_page
@@ -238,8 +238,8 @@ class Client:
         :param per_page: The number of photos to retrieve per page. Must be between 1 and 30.
         :type per_page: Optional[int]
         """
-        if per_page is not None and not (1 <= per_page <= 30):
-            raise ValueError("per_page must be between 1 and 30")
+        if per_page is not None and not 1 <= per_page <= 30:
+            raise ValueError("'per_page' must be between 1 and 30")
         params = {
             "page": page,
             "per_page": per_page
@@ -285,8 +285,8 @@ class Client:
         :param count: The number of random photos to retrieve. Must be between 1 and 30.
         :type count: Optional[int]
         """
-        if count is not None and not (1 <= count <= 30):
-            raise ValueError("count must be between 1 and 30")
+        if count is not None and not 1 <= count <= 30:
+            raise ValueError("'count' must be between 1 and 30")
         params = {
             "collections": ",".join(collection_ids) if collection_ids else None,
             "topics": ",".join(topic_ids) if topic_ids else None,
@@ -480,8 +480,8 @@ class Client:
         :param language: The ISO 639-1 language code for the search results (for access this beta parameter, email `api@unsplash.com <mailto:api@unsplash.com>`_ with your application ID)
         :type language: Optional[str]
         """
-        if per_page is not None and not (1 <= per_page <= 30):
-            raise ValueError("per_page must be between 1 and 30")
+        if per_page is not None and not 1 <= per_page <= 30:
+            raise ValueError("'per_page' must be between 1 and 30")
         params = {
             "query": query,
             "page": page,
@@ -513,8 +513,8 @@ class Client:
         :param per_page: The number of collections to retrieve per page. Must be between 1 and 30.
         :type per_page: Optional[int]
         """
-        if per_page is not None and not (1 <= per_page <= 30):
-            raise ValueError("per_page must be between 1 and 30")
+        if per_page is not None and not 1 <= per_page <= 30:
+            raise ValueError("'per_page' must be between 1 and 30")
         params = {
             "query": query,
             "page": page,
@@ -540,8 +540,8 @@ class Client:
         :param per_page: The number of users to retrieve per page. Must be between 1 and 30.
         :type per_page: Optional[int]
         """
-        if per_page is not None and not (1 <= per_page <= 30):
-            raise ValueError("per_page must be between 1 and 30")
+        if per_page is not None and not 1 <= per_page <= 30:
+            raise ValueError("'per_page' must be between 1 and 30")
         params = {
             "query": query,
             "page": page,
@@ -564,8 +564,8 @@ class Client:
         :param per_page: The number of collections to retrieve per page. Must be between 1 and 30.
         :type per_page: Optional[int]
         """
-        if per_page is not None and not (1 <= per_page <= 30):
-            raise ValueError("per_page must be between 1 and 30")
+        if per_page is not None and not 1 <= per_page <= 30:
+            raise ValueError("'per_page' must be between 1 and 30")
         params = {
             "page": page,
             "per_page": per_page
@@ -595,8 +595,8 @@ class Client:
         :param orientation: The orientation of the photos to retrieve.
         :type orientation: Optional[Literal["landscape", "portrait", "squarish"]]
         """
-        if per_page is not None and not (1 <= per_page <= 30):
-            raise ValueError("per_page must be between 1 and 30")
+        if per_page is not None and not 1 <= per_page <= 30:
+            raise ValueError("'per_page' must be between 1 and 30")
         params = {
             "page": page,
             "per_page": per_page,
@@ -618,6 +618,17 @@ class Client:
     def create_collection(self, title: str, description: Optional[str] = None, private: Optional[bool] = False) -> UnsplashObject:
         """
         Create a new collection.
+
+        .. note::
+
+            This action requires the `write_collections` scope.
+
+        :param title: The title of the collection.
+        :type title: str
+        :param description: The description of the collection.
+        :type description: Optional[str]
+        :param private: Whether the collection is private.
+        :type private: Optional[bool]
         """
         data = {
             "title": title,
@@ -628,7 +639,20 @@ class Client:
 
     def update_collection(self, collection_id: str, *, title: Optional[str] = None, description: Optional[str] = None, private: Optional[bool] = None) -> UnsplashObject:
         """
-        Update a collection's details.
+        Update a collection's metadata.
+
+        .. note::
+
+            This action requires the `write_collections` scope.
+
+        :param collection_id: The ID of the collection to update.
+        :type collection_id: str
+        :param title: The new title for the collection.
+        :type title: Optional[str]
+        :param description: The new description for the collection.
+        :type description: Optional[str]
+        :param private: Whether the collection is private.
+        :type private: Optional[bool]
         """
         data = {
             "title": title,
@@ -640,29 +664,71 @@ class Client:
     def delete_collection(self, collection_id: str) -> None:
         """
         Delete a collection.
+
+        .. note::
+
+            This action requires the `write_collections` scope.
+
+        :param collection_id: The ID of the collection to delete.
+        :type collection_id: str
         """
         _delete(self, f"/collections/{collection_id}")
 
     def add_photo_to_collection(self, collection_id: str, photo_id: str) -> UnsplashObject:
         """
         Add a photo to a collection.
+
+        .. note::
+
+            This action requires the `write_collections` scope.
+
+        :param collection_id: The ID of the collection to add the photo to.
+        :type collection_id: str
+        :param photo_id: The ID of the photo to add to the collection.
+        :type photo_id: str
         """
-        data = {"photo_id": photo_id}
+        data = {
+            "photo_id": photo_id
+        }
         return UnsplashObject(_post(self, f"/collections/{collection_id}/add", data=data))
 
     def remove_photo_from_collection(self, collection_id: str, photo_id: str) -> UnsplashObject:
         """
         Remove a photo from a collection.
+
+        .. note::
+
+            This action requires the `write_collections` scope.
+
+        :param collection_id: The ID of the collection to remove the photo from.
+        :type collection_id: str
+        :param photo_id: The ID of the photo to remove from the collection.
+        :type photo_id: str
         """
-        params = {"photo_id": photo_id}
+        params = {
+            "photo_id": photo_id
+        }
         return _delete(self, f"/collections/{collection_id}/remove", params=params)
 
-    def list_topics(self, *, page: Optional[int] = 1, per_page: Optional[int] = 10, order_by: Literal["featured", "latest", "oldest", "position"] = "position") -> List[UnsplashObject]:
+    def list_topics(
+        self,
+        *,
+        page: Optional[int] = 1,
+        per_page: Optional[int] = 10,
+        order_by: Literal["featured", "latest", "oldest", "position"] = "position"
+    ) -> List[UnsplashObject]:
         """
-        List topics.
+        List topics on a single page.
+
+        :param page: The page number to retrieve.
+        :type page: Optional[int]
+        :param per_page: The number of topics to retrieve per page. Must be between 1 and 30.
+        :type per_page: Optional[int]
+        :param order_by: The order in which to retrieve the topics.
+        :type order_by: Literal["featured", "latest", "oldest", "position"]
         """
-        if per_page is not None and not (1 <= per_page <= 30):
-            raise ValueError("per_page must be between 1 and 30")
+        if per_page is not None and not 1 <= per_page <= 30:
+            raise ValueError("'per_page' must be between 1 and 30")
         params = {
             "page": page,
             "per_page": per_page,
@@ -673,16 +739,38 @@ class Client:
 
     def get_topic(self, topic_id_or_slug: str) -> UnsplashObject:
         """
-        Get a topic by ID or slug.
+        Get a topic by its ID or slug.
+
+        :param topic_id_or_slug: The ID or slug of the topic to retrieve.
+        :type topic_id_or_slug: str
         """
         return UnsplashObject(_get(self, f"/topics/{topic_id_or_slug}"))
 
-    def get_topic_photos(self, topic_id_or_slug: str, *, page: Optional[int] = 1, per_page: Optional[int] = 10, order_by: Literal["latest", "oldest", "popular"] = "latest", orientation: Optional[Literal["landscape", "portrait", "squarish"]] = None) -> List[UnsplashObject]:
+    def get_topic_photos(
+        self,
+        topic_id_or_slug: str,
+        *,
+        page: Optional[int] = 1,
+        per_page: Optional[int] = 10,
+        order_by: Literal["latest", "oldest", "popular"] = "latest",
+        orientation: Optional[Literal["landscape", "portrait", "squarish"]] = None
+    ) -> List[UnsplashObject]:
         """
-        Get photos for a topic.
+        Get photos from a topic.
+
+        :param topic_id_or_slug: The ID or slug of the topic to retrieve photos from.
+        :type topic_id_or_slug: str
+        :param page: The page number to retrieve.
+        :type page: Optional[int]
+        :param per_page: The number of photos to retrieve per page. Must be between 1 and 30.
+        :type per_page: Optional[int]
+        :param order_by: The order in which to retrieve the photos.
+        :type order_by: Literal["latest", "oldest", "popular"]
+        :param orientation: The orientation of the photos to retrieve.
+        :type orientation: Optional[Literal["landscape", "portrait", "squarish"]]
         """
-        if per_page is not None and not (1 <= per_page <= 30):
-            raise ValueError("per_page must be between 1 and 30")
+        if per_page is not None and not 1 <= per_page <= 30:
+            raise ValueError("'per_page' must be between 1 and 30")
         params = {
             "page": page,
             "per_page": per_page,
@@ -694,12 +782,12 @@ class Client:
 
     def get_total_stats(self) -> UnsplashObject:
         """
-        Get Unsplash total stats.
+        Get the total statistics for the Unsplash API.
         """
         return UnsplashObject(_get(self, "/stats/total"))
 
     def get_monthly_stats(self) -> UnsplashObject:
         """
-        Get Unsplash monthly stats.
+        Get the overall statistics for the Unsplash API for the past 30 days.
         """
         return UnsplashObject(_get(self, "/stats/monthly"))
