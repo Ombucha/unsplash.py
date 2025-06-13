@@ -6,7 +6,7 @@ HERE = Path(__file__).resolve().parent
 README = (HERE / "README.rst").read_text()
 
 setup(
-    name = "unplash-python",
+    name = "unsplash-client",
     version = "1.0.0",
     description = "A basic API wrapper for Unsplash.",
     long_description = README,

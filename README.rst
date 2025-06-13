@@ -1,10 +1,10 @@
 .. image:: https://raw.githubusercontent.com/Ombucha/unsplash.py/main/banner.png
 
-.. image:: https://img.shields.io/pypi/v/unsplash.py
-    :target: https://pypi.python.org/pypi/unsplash.py
+.. image:: https://img.shields.io/pypi/v/unsplash-client
+    :target: https://pypi.python.org/pypi/unsplash-client
     :alt: PyPI version
-.. image:: https://img.shields.io/pypi/dm/unsplash.py
-    :target: https://pypi.python.org/pypi/unsplash.py
+.. image:: https://img.shields.io/pypi/dm/unsplash-client
+    :target: https://pypi.python.org/pypi/unsplash-client
     :alt: PyPI downloads
 .. image:: https://sloc.xyz/github/Ombucha/unsplash.py
     :target: https://github.com/Ombucha/unsplash.py/graphs/contributors
