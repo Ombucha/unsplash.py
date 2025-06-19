@@ -3,13 +3,13 @@
 .. image:: https://img.shields.io/pypi/v/unsplash-client
     :target: https://pypi.python.org/pypi/unsplash-client
     :alt: PyPI version
-.. image:: https://img.shields.io/pypi/dm/unsplash-client
+.. image:: https://static.pepy.tech/personalized-badge/unsplash-client?period=total&left_text=downloads&left_color=grey&right_color=red
     :target: https://pypi.python.org/pypi/unsplash-client
     :alt: PyPI downloads
-.. image:: https://sloc.xyz/github/Ombucha/unsplash.py
+.. image:: https://sloc.xyz/github/Ombucha/unsplash.py?lower=True
     :target: https://github.com/Ombucha/unsplash.py/graphs/contributors
     :alt: Lines of code
-.. image:: https://img.shields.io/github/repo-size/Ombucha/unsplash.py
+.. image:: https://img.shields.io/github/repo-size/Ombucha/unsplash.py?color=yellow
     :target: https://github.com/Ombucha/unsplash.py
     :alt: Repository size
 
